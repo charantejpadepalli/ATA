@@ -5,30 +5,36 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a className="navbar-brand">Student Management App</a>
+        <a className="navbar-brand">Customer Interface</a>
 
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <NavLink className="nav-link" exact to="/students">
+              <NavLink className="nav-link" exact to="/customers">
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" exact to="/students/about">
+              <NavLink className="nav-link" exact to="/loginreg/about">
                 About
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" exact to="/students/contact">
+              <NavLink className="nav-link" exact to="/loginreg/contact">
                 Contacts
               </NavLink>
             </li>
           </ul>
         </div>
-        <Link to="/students/add" className="btn btn-outline-light">
-          Add Students
+        <Link to="/customers/add" className="btn btn-outline-light mr-4">
+          Add Customers
         </Link>
+        {(sessionStorage.getItem('username')!= null)?
+            (
+            <Link className="btn btn-outline-danger" to={`/customers/logout`}>Logout</Link>
+            )
+          : null
+        }
       </nav>
     );
   }
